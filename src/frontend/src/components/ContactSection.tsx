@@ -1,6 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader2, Mail, MapPin, MessageSquare, Phone } from "lucide-react";
 import { motion } from "motion/react";
@@ -29,11 +36,22 @@ const contactInfo = [
   },
 ];
 
+const ENQUIRY_TYPES = [
+  "General Enquiry",
+  "Campaign Management",
+  "Digital Strategy",
+  "Voter Research",
+  "Event Management",
+  "Partnership",
+  "Other",
+];
+
 export default function ContactSection() {
   const { actor } = useActor();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [enquiryType, setEnquiryType] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,16 +64,18 @@ export default function ContactSection() {
     }
     setIsSubmitting(true);
     try {
-      await actor.submitContact(name, phone, email, subject, message);
-      toast.success("Message sent successfully! We'll be in touch soon.");
+      const fullSubject = enquiryType ? `[${enquiryType}] ${subject}` : subject;
+      await actor.submitContact(name, phone, email, fullSubject, message);
+      toast.success("Enquiry submitted successfully! We'll be in touch soon.");
       setName("");
       setPhone("");
       setEmail("");
+      setEnquiryType("");
       setSubject("");
       setMessage("");
     } catch (error) {
       console.error(error);
-      toast.error("Failed to send message. Please try again.");
+      toast.error("Failed to send enquiry. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -64,7 +84,6 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-24 bg-white scroll-mt-20">
       <div className="container mx-auto px-6">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -76,17 +95,16 @@ export default function ContactSection() {
             Reach Us
           </span>
           <h2 className="text-4xl md:text-5xl font-black uppercase mt-2 text-charcoal">
-            GET IN TOUCH
+            Customer Enquiry
           </h2>
           <div className="w-16 h-1 bg-saffron mx-auto mt-4" />
           <p className="text-gray-600 mt-4 max-w-xl mx-auto">
-            Ready to transform your political campaign? Get in touch with our
-            team today.
+            Ready to transform your political campaign? Submit your enquiry and
+            our team will get back to you promptly.
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-5 gap-12">
-          {/* Left: contact info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -119,7 +137,6 @@ export default function ContactSection() {
             ))}
           </motion.div>
 
-          {/* Right: form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -133,7 +150,7 @@ export default function ContactSection() {
                   <MessageSquare size={22} className="text-saffron" />
                 </div>
                 <h3 className="font-bold text-charcoal text-xl">
-                  Send Us a Message
+                  Submit Enquiry
                 </h3>
               </div>
 
@@ -194,16 +211,40 @@ export default function ContactSection() {
 
                 <div>
                   <Label
+                    htmlFor="con-enquiry-type"
+                    className="text-charcoal font-medium text-sm mb-1.5 block"
+                  >
+                    Enquiry Type *
+                  </Label>
+                  <Select value={enquiryType} onValueChange={setEnquiryType}>
+                    <SelectTrigger
+                      id="con-enquiry-type"
+                      data-ocid="contact.enquiry_type.select"
+                    >
+                      <SelectValue placeholder="Select enquiry type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {ENQUIRY_TYPES.map((type) => (
+                        <SelectItem key={type} value={type}>
+                          {type}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <Label
                     htmlFor="con-subject"
                     className="text-charcoal font-medium text-sm mb-1.5 block"
                   >
-                    Subject *
+                    Subject / Description *
                   </Label>
                   <Input
                     id="con-subject"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    placeholder="How can we help?"
+                    placeholder="Brief description of your requirement"
                     required
                     data-ocid="contact.subject.input"
                   />
@@ -237,10 +278,10 @@ export default function ContactSection() {
                   {isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Sending...
+                      Submitting...
                     </>
                   ) : (
-                    "Send Message"
+                    "Submit Enquiry"
                   )}
                 </Button>
               </form>

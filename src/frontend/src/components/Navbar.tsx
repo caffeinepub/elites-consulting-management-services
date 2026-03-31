@@ -11,6 +11,7 @@ const navLinks = [
   { label: "Campaigns", id: "campaigns" },
   { label: "Volunteer", id: "volunteer" },
   { label: "Gallery", id: "gallery" },
+  { label: "Proposal", id: "proposal" },
   { label: "Contact", id: "contact" },
 ];
 
@@ -36,7 +37,6 @@ export default function Navbar() {
       style={{ backgroundColor: "oklch(var(--navy-dark))" }}
     >
       <div className="container mx-auto px-4 py-2 flex items-center justify-between">
-        {/* Logo */}
         <button
           type="button"
           onClick={() => scrollToSection("hero")}
@@ -46,8 +46,7 @@ export default function Navbar() {
           <LogoMark />
         </button>
 
-        {/* Desktop nav links */}
-        <div className="hidden lg:flex items-center gap-7">
+        <div className="hidden lg:flex items-center gap-5">
           {navLinks.map((link) => (
             <button
               type="button"
@@ -61,7 +60,6 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* CTA + mobile toggle */}
         <div className="flex items-center gap-3">
           <Button
             onClick={() => scrollToSection("contact")}
@@ -82,7 +80,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div

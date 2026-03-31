@@ -6,7 +6,9 @@ import Footer from "./components/Footer";
 import GallerySection from "./components/GallerySection";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
+import ProposalSection from "./components/ProposalSection";
 import ServicesSection from "./components/ServicesSection";
+import ShareButton from "./components/ShareButton";
 import VolunteerSection from "./components/VolunteerSection";
 import WorkingStatesSection from "./components/WorkingStatesSection";
 
@@ -23,8 +25,10 @@ export default function App() {
         <GallerySection />
         <VolunteerSection />
         <ContactSection />
+        <ProposalSection />
       </main>
       <Footer />
+      <ShareButton />
       <Toaster richColors position="top-right" />
     </div>
   );
