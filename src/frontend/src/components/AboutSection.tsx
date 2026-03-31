@@ -1,4 +1,4 @@
-import { Eye, Target } from "lucide-react";
+import { Eye, Phone, Target, User } from "lucide-react";
 import { motion } from "motion/react";
 
 export default function AboutSection() {
@@ -138,66 +138,108 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
-        {/* MD section */}
+        {/* Leadership section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="rounded-2xl overflow-hidden"
-          style={{ backgroundColor: "oklch(var(--navy))" }}
+          className="text-center mb-10"
         >
-          <div className="grid md:grid-cols-5 items-stretch">
-            {/* Photo */}
-            <div className="md:col-span-2 relative min-h-72 md:min-h-full">
-              <img
-                src="/assets/generated/md-rajneesh-tiwari.dim_400x500.png"
-                alt="Rajneesh Tiwari – Managing Director"
-                className="absolute inset-0 w-full h-full object-cover object-top"
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(to right, transparent 50%, oklch(var(--navy)))",
-                }}
-              />
-            </div>
+          <span className="text-saffron font-semibold uppercase tracking-widest text-sm">
+            Our Leadership
+          </span>
+          <h3 className="text-3xl font-black uppercase mt-2 text-charcoal">
+            Meet The Team
+          </h3>
+          <div className="w-12 h-1 bg-saffron mx-auto mt-3" />
+        </motion.div>
 
-            {/* Bio */}
-            <div className="md:col-span-3 p-8 md:p-12 text-white">
-              <span className="text-saffron text-xs font-bold uppercase tracking-widest">
-                Meet Our Managing Director
-              </span>
-              <h3 className="text-3xl md:text-4xl font-black uppercase mt-2 mb-4">
-                Rajneesh Tiwari
-              </h3>
-              <div className="w-12 h-1 bg-saffron mb-6" />
-              <p className="text-white/80 leading-relaxed mb-4">
-                With over 6 years of experience in political campaign management
-                across multiple states in India, Rajneesh Tiwari has built a
-                reputation for delivering results that matter. His deep
-                understanding of voter psychology, data-driven approaches, and
-                on-ground leadership have helped hundreds of candidates and
-                political organizations achieve their goals.
-              </p>
-              <p className="text-white/70 leading-relaxed">
-                A visionary strategist committed to transforming the landscape
-                of political consulting in India — combining modern digital
-                tools with traditional grassroots engagement to deliver decisive
-                electoral victories.
-              </p>
+        {/* MD + Co-founder cards */}
+        <div className="grid md:grid-cols-2 gap-8 mb-6">
+          {/* MD card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="rounded-2xl overflow-hidden"
+            style={{ backgroundColor: "oklch(var(--navy))" }}
+          >
+            <div className="flex flex-col justify-between h-full p-8 text-white">
+              <div>
+                <div className="w-16 h-16 rounded-full bg-saffron/20 border-2 border-saffron/40 flex items-center justify-center mb-5">
+                  <User size={32} className="text-saffron" />
+                </div>
+                <span className="text-saffron text-xs font-bold uppercase tracking-widest">
+                  Managing Director
+                </span>
+                <h3 className="text-2xl md:text-3xl font-black uppercase mt-2 mb-3">
+                  Rajneesh Tiwari
+                </h3>
+                <div className="w-10 h-0.5 bg-saffron mb-5" />
+                <p className="text-white/70 leading-relaxed text-sm">
+                  6+ years in political campaign management across multiple
+                  states in India. Visionary strategist combining digital tools
+                  with grassroots engagement to deliver decisive electoral
+                  victories.
+                </p>
+              </div>
               <div className="mt-8 pt-6 border-t border-white/10">
-                <div className="text-white font-bold text-lg">
+                <div className="text-white font-bold text-sm">
                   Rajneesh Tiwari
                 </div>
-                <div className="text-saffron text-sm mt-0.5">
-                  Managing Director, Elites Consulting &amp; Management Services
+                <div className="text-saffron text-xs mt-0.5">
+                  Managing Director
                 </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+
+          {/* Co-founder card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="rounded-2xl overflow-hidden"
+            style={{ backgroundColor: "oklch(var(--navy))" }}
+          >
+            <div className="flex flex-col justify-between h-full p-8 text-white">
+              <div>
+                <span className="text-saffron text-xs font-bold uppercase tracking-widest">
+                  Co-Founder
+                </span>
+                <h3 className="text-2xl md:text-3xl font-black uppercase mt-2 mb-3">
+                  Sandeep Vishwash
+                </h3>
+                <div className="w-10 h-0.5 bg-saffron mb-5" />
+                <p className="text-white/70 leading-relaxed text-sm">
+                  A key pillar of Elites Consulting &amp; Management Services,
+                  Sandeep Vishwash brings strategic insight and operational
+                  excellence to every campaign. His leadership drives the firm's
+                  ground-level execution and client relationships across India.
+                </p>
+              </div>
+              <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-3">
+                <div className="p-2 rounded-lg bg-saffron/20">
+                  <Phone size={16} className="text-saffron" />
+                </div>
+                <div>
+                  <div className="text-white font-bold text-sm">
+                    Sandeep Vishwash
+                  </div>
+                  <a
+                    href="tel:+918076413435"
+                    className="text-saffron text-xs hover:text-saffron/80 transition-colors"
+                  >
+                    +91 80764 13435
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
