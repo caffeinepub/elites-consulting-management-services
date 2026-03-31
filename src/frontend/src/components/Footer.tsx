@@ -112,13 +112,15 @@ export default function Footer() {
                 <div className="text-saffron text-xs uppercase tracking-wider mb-0.5">
                   Phone
                 </div>
-                <div className="text-white/60">+91 98765 43210</div>
+                <div className="text-white/60">+91 78274 43618</div>
               </div>
               <div>
                 <div className="text-saffron text-xs uppercase tracking-wider mb-0.5">
                   Email
                 </div>
-                <div className="text-white/60">info@elitescms.in</div>
+                <div className="text-white/60">
+                  infoelitesconsulting890@gmail.com
+                </div>
               </div>
 
               {/* Social icons */}

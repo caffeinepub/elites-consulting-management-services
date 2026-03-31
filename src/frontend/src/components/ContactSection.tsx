@@ -12,19 +12,19 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone / WhatsApp",
-    value: "+91 98765 43210",
-    sub: "Mon \u2013 Sat, 9 AM \u2013 6 PM",
+    value: "+91 78274 43618",
+    sub: "Mon – Sat, 9 AM – 6 PM",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "info@elitescms.in",
+    value: "infoelitesconsulting890@gmail.com",
     sub: "We reply within 24 hours",
   },
   {
     icon: MapPin,
     label: "Office Address",
-    value: "Rohini Sector 8, North West Delhi \u2013 110084",
+    value: "Rohini Sector 8, North West Delhi – 110084",
     sub: "India",
   },
 ];
